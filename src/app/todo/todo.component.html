@@ -1,0 +1,16 @@
+<div class="todo-list">
+  <h2>Todo List</h2>
+
+  <div class="new-todo">
+    <input [(ngModel)]="newTodoTitle" placeholder="New todo..." />
+    <button (click)="addTodo()">Add</button>
+  </div>
+
+  <div class="todos">
+    <div *ngFor="let todo of todos$ | async" class="todo-item">
+      <input type="checkbox" [checked]="todo.isDone" (change)="toggleTodo(todo.title)" />
+      <span>{{ todo.title }}</span>
+      <button (click)="deleteTodo(todo.title)">Delete</button>
+    </div>
+  </div>
+</div>
